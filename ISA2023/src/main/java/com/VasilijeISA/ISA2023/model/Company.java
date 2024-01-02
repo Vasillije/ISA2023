@@ -21,7 +21,7 @@ public class Company {
     private String name;
     private String address;
     private String description;
-    private String avgRating;
+    private float avgRating;
     @OneToMany
     @JoinColumn(name = "company_id")
     private List<Appointment> freeAppointments;
