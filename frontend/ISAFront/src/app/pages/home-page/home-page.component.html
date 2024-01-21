@@ -1,1 +1,35 @@
-<p>home page  vasilije ne  voli saru </p>
+<div class="view">
+    <div class="panel">
+        <h1>Companies</h1>
+
+        <div class="form">
+            <form>
+                <div class="formField">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Search</mat-label>
+                        <input matInput type="text">
+                    </mat-form-field>
+                    <button mat-button type="submit">Search</button>
+                </div>
+            </form>    
+        </div>
+
+        <mat-accordion>
+            <div *ngFor="let c of companies">
+            <mat-expansion-panel (opened)="isOpen = true"
+                                (closed)="isOpen = false">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                c.name
+                </mat-panel-title>
+                <mat-panel-description>
+                Currently I am {{isOpen ? 'open' : 'closed'}}
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+            <p>c.description</p>
+            </mat-expansion-panel>
+            </div>
+        </mat-accordion>
+    </div>
+   
+</div>

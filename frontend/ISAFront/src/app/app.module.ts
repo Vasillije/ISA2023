@@ -4,6 +4,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
+import { HttpClientModule } from '@angular/common/http';
 
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
@@ -13,11 +14,14 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
 import { MatTableModule } from '@angular/material/table';
 import { MatInputModule } from '@angular/material/input';
+import {MatExpansionModule} from '@angular/material/expansion';
+import { RegisterComponent } from './pages/register/register.component';
 @NgModule({
   declarations: [
     AppComponent,
     HomePageComponent,
-    LoginPageComponent
+    LoginPageComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +33,9 @@ import { MatInputModule } from '@angular/material/input';
     MatFormFieldModule,
     FormsModule,
     MatInputModule,
-    MatTableModule
+    MatTableModule,
+    HttpClientModule,
+    MatExpansionModule
   ],
   providers: [
     provideClientHydration()
