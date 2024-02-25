@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Company } from '../model/company';
+import { Appointment } from '../model/appointment';
+import { SearchDto } from '../dto/searchDto';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +13,10 @@ export class CompanyService {
   constructor(private http: HttpClient) { }
 
   getAll(){
-    return this.http.get<Company[]>(this.url + '/api/company/all');
+    return this.http.get<Company[]>('http://localhost:8080/api/company/all');
+  }
+
+  search(s: SearchDto){
+    return this.http.post<Company[]>(this.url + '/api/company/search', s);
   }
 }

@@ -1,4 +1,7 @@
+import { Appointment } from "./appointment";
+import { Company } from "./company";
 import { Complaint } from "./complaint";
+import { Role } from "./role";
 
 export interface User{
     id:number,
@@ -11,5 +14,8 @@ export interface User{
     phoneNumber:string,
     profession:string,
     companyInfo:string,
-    complaintList: Complaint[]
+    appointments:Appointment[],
+    role:Role,
+    complaints: Complaint[],
+    company: Company
 }

@@ -1,14 +1,14 @@
 package com.VasilijeISA.ISA2023.model;
 
-import jakarta.persistence.*;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.sql.Time;
+import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "appointments")
@@ -20,9 +20,18 @@ public class Appointment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String adminFullName;
+    private String companyAdminFullName;
     private String duration;
     private LocalDateTime dateAndTime;
 
+    @ManyToOne
+    @JoinColumn(name="user_id")
+    private User userAppointment;
 
+    @ManyToOne
+    @JoinColumn(name="company_id")
+    private Company companyAppointment;
+
+     @ManyToMany(mappedBy = "appointmentsEquipment")
+    private List<Equipment> equipmentsAppointment;
 }

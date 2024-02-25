@@ -1,10 +1,11 @@
 package com.VasilijeISA.ISA2023.model;
 
-import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import javax.persistence.*;
 
 @Entity
 @Table(name="complaints")
@@ -16,7 +17,12 @@ public class Complaint {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-   // private Company company;
-   // private User companyAdmin;
-  //  private String description;
+    private String description;
+    @ManyToOne
+    @JoinColumn(name="company_id")
+    private Company companyComplaint;
+
+    @ManyToOne
+    @JoinColumn(name="companyAdmin_id")
+    private User companyAdmin;
 }

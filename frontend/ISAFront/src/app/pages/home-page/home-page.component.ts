@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { CompanyService } from '../../services/company.service';
 import { Company } from '../../model/company';
+import { Appointment } from '../../model/appointment';
+import { SearchDto } from '../../dto/searchDto';
 
 @Component({
   selector: 'app-home-page',
@@ -19,4 +21,18 @@ export class HomePageComponent {
       this.companies = data
     })
   }
+  
+  search(result:any){
+    const s: SearchDto = {
+      name: result.name,
+      town: result.town 
+    };
+  
+    this.companyService.search(s).subscribe((data) => {
+    this.companies = data
+    })
+   console.log(result);
+  }
+
+
 }

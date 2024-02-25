@@ -1,6 +1,13 @@
+import { Company } from "./company";
+import { Equipment } from "./equipment";
+import { User } from "./user";
+
 export interface Appointment{
     id:number,
-    adminFullName:string,
+    companyAdminFullName:string,
     duration:string,
-    dateAndTime:Date
+    dateAndTime:Date,
+    userAppointment:User,
+    companyAppointment:Company,
+    equipmentsAppointment:Equipment[]
 }
