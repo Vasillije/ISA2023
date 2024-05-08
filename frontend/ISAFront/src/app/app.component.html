@@ -1,12 +1,20 @@
-
 <mat-toolbar class="toolbar">
   <div>
     <button mat-icon-button> <mat-icon>menu</mat-icon></button>
     <button mat-button routerLink="" class="ISA2023">ISA2023</button>
   </div>
   <div>
-    <button mat-button class="loginButton">register</button>
-    <button mat-button class="loginButton">login</button>
+    <div *ngIf="authService.show==0">
+    <button (click)="redirectToRegister()" mat-button class="registerButton">register</button>
+    <button (click)="redirectToLogin()" mat-button class="loginButton">login</button>
+    </div>
+    <div *ngIf="authService.show==1">
+    <button (click)="logout()" mat-button class="loginButton">logout</button>
+    </div>
   </div>
+  
 </mat-toolbar>
-<router-outlet></router-outlet>
+
+<router-outlet>
+  
+</router-outlet>

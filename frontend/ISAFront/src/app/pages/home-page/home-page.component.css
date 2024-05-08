@@ -4,8 +4,19 @@
 }
 .form{
     width: 80%;
-    
+    margin-right: 130px;
 }
+
+.picture-div{
+    float:left;
+    margin-left: 75px;
+    width: 60%;
+}
+
+.button{
+    margin-left : 30px;
+}
+
 .formField{
     float: right;
     width: 28%;
@@ -14,8 +25,13 @@
     margin: 2%;
 }
 .formField button{
-    background-color: rgb(221, 234, 250);
+    background-color: rgb(216, 232, 251);
     margin-bottom: 5%;
+}
+
+.formField {
+    display: flex;
+    align-items: center; 
 }
 
 .panel{
@@ -29,7 +45,24 @@
 mat-accordion{
     width: 80%;
 }
+
+.parag{
+    font-family: Garamond, serif;
+    font-size: 22px;
+    margin-top: 25px;
+    text-align: justify;
+}
+
+a{
+    text-decoration: none;
+}
+
 h1{
     margin: auto;
     margin-bottom: 3%;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.view{
+    background: linear-gradient(to bottom, rgb(221, 234, 250), rgb(255, 255, 255));
 }

@@ -22,7 +22,8 @@ public class Appointment {
     private Long id;
     private String companyAdminFullName;
     private String duration;
-    private LocalDateTime dateAndTime;
+    private LocalDateTime startDateAndTime;
+    private Boolean isBooked;
 
     @ManyToOne
     @JoinColumn(name="user_id")

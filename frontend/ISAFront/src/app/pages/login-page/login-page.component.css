@@ -1,0 +1,37 @@
+.backgroundcol{
+    display: block;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+.center{
+    width: fit-content; 
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    background-color: white;
+    height: 370px;
+    width: 700px;
+    border-radius: 40px;
+}
+
+h1{
+    text-align: center;
+    margin-right: 80px;
+    padding-top: 70px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.image-container {
+    margin-left: 50px;    
+}
+
+
+.submit {
+    background-color: rgb(221, 234, 250);
+    margin-left: auto;
+  }
+
+.right{
+    text-align: right;
+}

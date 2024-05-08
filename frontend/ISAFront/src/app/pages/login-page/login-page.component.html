@@ -1,12 +1,27 @@
-<h1>Login</h1>
-<form (ngSubmit)="login()">
-    <mat-form-field appearance="fill">
-        <mat-label>Username</mat-label>
-        <input matInput type="text">
-    </mat-form-field>
-    <mat-form-field appearance="fill">
-        <mat-label>Password</mat-label>
-        <input matInput type="password">
-    </mat-form-field>
-    <button mat-button type="submit">Submit</button>
-</form>
+<div class="backgroundcol" style="background: linear-gradient(to bottom, rgb(221, 234, 250), rgb(255, 255, 255));">
+    <div class="center">
+        
+        <div class="image-container">
+            <img src="../../../assets/logo.jpg" alt="logo">
+        </div>
+        <div class="login-class">
+            <h1><b>LOGIN</b></h1>
+            <form #loginForm="ngForm" (ngSubmit)="login(loginForm.value)">
+                <mat-form-field appearance="fill">
+                    <mat-label>Email</mat-label>
+                    <input matInput type="text" name="email" ngModel>
+                </mat-form-field>
+
+                <div style="margin-top: 10px;"></div>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Password</mat-label>
+                    <input matInput type="password" name="password" ngModel>
+                </mat-form-field>
+                <div class="right">
+                    <button class="submit" mat-button type="submit">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

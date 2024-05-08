@@ -13,4 +13,7 @@ public class AppointmentService {
     public List<Appointment> getAll(){
         return appointmentRepository.findAll();
     }
+
+
+
 }

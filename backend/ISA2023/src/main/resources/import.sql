@@ -1,4 +1,6 @@
-
+insert into roles (name) values ('ROLE_USER');
+insert into roles (name) values ('ROLE_ADMIN');
+insert into roles (name) values ('ROLE_SUPERADMIN');
 insert into companies (name,address,town,description,avg_rating) values ('NazivKompanije', 'AdresaKompanije','Nis', 'OpisKompanije', 4.5);
 insert into companies (name,address,town,description,avg_rating) values ('prva', 'AdresaKompanije','Nis', 'OpisKompanije', 4.5);
 insert into companies (name,address,town,description,avg_rating) values ('druga', 'AdresaKompanije','Beograd', 'OpisKompanije', 4.5);

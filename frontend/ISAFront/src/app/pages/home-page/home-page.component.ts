@@ -3,6 +3,8 @@ import { CompanyService } from '../../services/company.service';
 import { Company } from '../../model/company';
 import { Appointment } from '../../model/appointment';
 import { SearchDto } from '../../dto/searchDto';
+import { HttpErrorResponse } from '@angular/common/http';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-home-page',
@@ -14,7 +16,7 @@ export class HomePageComponent {
   isOpen =false
   companies:Company[]=[]
 
-  constructor(private companyService : CompanyService){}
+  constructor(private companyService : CompanyService, public authService : AuthService){}
 
   ngOnInit(): void {
     this.companyService.getAll().subscribe((data) => {
@@ -30,6 +32,8 @@ export class HomePageComponent {
   
     this.companyService.search(s).subscribe((data) => {
     this.companies = data
+    }, (error: HttpErrorResponse) => {
+      alert(error.message);
     })
    console.log(result);
   }

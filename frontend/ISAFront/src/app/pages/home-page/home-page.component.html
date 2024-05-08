@@ -1,19 +1,30 @@
 <div class="view">
     <div class="panel">
-        <h1>Companies</h1>
-
+        <h1><b>COMPANIES</b></h1>
         <div class="form">
             <form  #companyForm="ngForm" (ngSubmit)="search(companyForm.value)"> 
+                <div class="picture-div">      
+                    <p class="parag" *ngIf="authService.show==0">
+                        This page is intended only for users who are not logged in. You can currently see companies and search 
+                        for their medical equipment. If you want to use additional benefits of our website, 
+                        please<a href="http://localhost:4200/register" target="_blank"><i> create your own profile</i></a> or
+                        <a href="http://localhost:4200/login" target="_blank"><i>log in.</i></a>
+                    </p>
+                </div>
                 <div class="formField">
-                    <mat-form-field appearance="fill">
-                        <mat-label>Search by name</mat-label>
-                        <input matInput type="text"  name="name" ngModel>
-                    </mat-form-field>
-                    <mat-form-field appearance="fill">
-                        <mat-label>Search by town</mat-label>
-                        <input matInput type="text"  name="town" ngModel>
-                    </mat-form-field>
+                    <div class="input-container">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Search by name</mat-label>
+                            <input matInput type="text"  name="name" ngModel>
+                        </mat-form-field>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Search by town</mat-label>
+                            <input matInput type="text"  name="town" ngModel>
+                        </mat-form-field>
+                    </div>
+                    <div class="button">
                     <button mat-button type="submit">Search</button>
+                    </div>
                 </div>
             </form>    
         </div>
@@ -30,6 +41,5 @@
                 </mat-expansion-panel>
             </div>
         </mat-accordion>
-    </div>
-   
+    </div>  
 </div>
