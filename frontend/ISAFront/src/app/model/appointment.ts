@@ -6,7 +6,9 @@ export interface Appointment{
     id:number,
     companyAdminFullName:string,
     duration:string,
-    dateAndTime:Date,
+    startDateAndTime:Date,
+    finishDateAndTime:Date,
+    isBooked:boolean,
     userAppointment:User,
     companyAppointment:Company,
     equipmentsAppointment:Equipment[]

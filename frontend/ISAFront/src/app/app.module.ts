@@ -16,13 +16,19 @@ import { MatTableModule } from '@angular/material/table';
 import { MatInputModule } from '@angular/material/input';
 import {MatExpansionModule} from '@angular/material/expansion';
 import { RegisterComponent } from './pages/register/register.component';
+import { AppointmentFormComponent } from './pages/appointment-form/appointment-form.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatMenuModule} from '@angular/material/menu';
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomePageComponent,
+    HomePageComponent,  
     LoginPageComponent,
-    RegisterComponent
+    RegisterComponent,
+    AppointmentFormComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +42,9 @@ import { RegisterComponent } from './pages/register/register.component';
     MatInputModule,
     MatTableModule,
     HttpClientModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatDatepickerModule,
+    MatMenuModule
   ],
   providers: [
     provideClientHydration()

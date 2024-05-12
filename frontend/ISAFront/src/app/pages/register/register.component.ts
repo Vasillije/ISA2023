@@ -24,8 +24,6 @@ export class RegisterComponent {
 
 
   register(result : any){
-    
-
     var emailElement = document.getElementById("email") as HTMLInputElement;
     var email : string = emailElement ? emailElement.value : '';
    
@@ -55,8 +53,7 @@ export class RegisterComponent {
     this.userDto.password = password;
     this.userDto.name = name;
     this.userDto.surname = surname;
-
- 
+    
     this.authService.register(this.userDto).subscribe((data)=>{
       this.user=data;
       alert('User succlesfully registered');

@@ -38,5 +38,4 @@ export class HomePageComponent {
    console.log(result);
   }
 
-
 }

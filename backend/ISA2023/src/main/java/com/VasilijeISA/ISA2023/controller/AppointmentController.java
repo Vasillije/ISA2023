@@ -1,14 +1,12 @@
 package com.VasilijeISA.ISA2023.controller;
 
+import com.VasilijeISA.ISA2023.dto.PredefinedAppointmentDto;
 import com.VasilijeISA.ISA2023.model.Appointment;
 import com.VasilijeISA.ISA2023.service.AppointmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -25,4 +23,10 @@ public class AppointmentController {
         List<Appointment> appointments = appointmentService.getAll();
         return new ResponseEntity<>(appointments, HttpStatus.OK);
     }
+
+    @PostMapping("/addPredefinedAppointment")
+    public Boolean addPredefinedAppointment(@RequestBody PredefinedAppointmentDto dto){
+        return appointmentService.addPredefinedAppoitment(dto);
+    }
+
 }

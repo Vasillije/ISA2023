@@ -1,0 +1,74 @@
+<div class="background" style="background: linear-gradient(to bottom, rgb(221, 234, 250), rgb(255, 255, 255));">
+    <div class="center">
+        <h1><b>APPOINTMENT FORM</b></h1>
+        <form #appointmentForm="ngForm">
+            <mat-form-field>
+                <mat-label>Choose a date</mat-label>
+                <input matInput [matDatepicker]="picker" [min]="minDate" name="chosenDate"  (dateChange)="datumIzabran($event)">
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+            <div class="start">
+                <p class="prg">Pick start time of the appointment</p>
+                <button mat-button  type="menu" class="btn1" [matMenuTriggerFor]="hoursMenu1">{{selectedHour || 'Pick hour'}}</button>
+                <mat-menu #hoursMenu1="matMenu">
+                    <button type="menu" mat-menu-item (click)="selectHour('8')">8</button>
+                    <button mat-menu-item (click)="selectHour('9')">9</button>
+                    <button mat-menu-item (click)="selectHour('10')">10</button>
+                    <button mat-menu-item (click)="selectHour('11')">11</button>
+                    <button mat-menu-item (click)="selectHour('12')">12</button>
+                    <button mat-menu-item (click)="selectHour('13')">13</button>
+                    <button mat-menu-item (click)="selectHour('14')">14</button>
+                    <button mat-menu-item (click)="selectHour('15')">15</button>
+                    <button mat-menu-item (click)="selectHour('16')">16</button>
+                    <button mat-menu-item (click)="selectHour('17')">17</button>
+                    <button mat-menu-item (click)="selectHour('18')">18</button>
+                    <button mat-menu-item (click)="selectHour('19')">19</button>
+                </mat-menu> 
+
+                <button mat-button class="btn2" [matMenuTriggerFor]="minutesMenu1">{{selectedMinutes || 'Pick minutes'}}</button>
+                <mat-menu #minutesMenu1="matMenu">
+                    <button mat-menu-item (click)="selectMinutes('00')">00</button>
+                    <button mat-menu-item (click)="selectMinutes('10')">10</button>
+                    <button mat-menu-item (click)="selectMinutes('20')">20</button>
+                    <button mat-menu-item (click)="selectMinutes('30')">30</button>
+                    <button mat-menu-item (click)="selectMinutes('40')">40</button>
+                    <button mat-menu-item (click)="selectMinutes('50')">50</button>
+                </mat-menu>
+
+                <div class="finish">
+                    <p class="prg">Pick finish time of the appointment</p>
+                <button mat-button class="btn1" [matMenuTriggerFor]="hoursMenu2">{{selectedHour2 || 'Pick hour'}}</button>
+                <mat-menu #hoursMenu2="matMenu">
+                    <button mat-menu-item (click)="selectHour2('8')">8</button>
+                    <button mat-menu-item (click)="selectHour2('9')">9</button>
+                    <button mat-menu-item (click)="selectHour2('10')">10</button>
+                    <button mat-menu-item (click)="selectHour2('11')">11</button>
+                    <button mat-menu-item (click)="selectHour2('12')">12</button>
+                    <button mat-menu-item (click)="selectHour2('13')">13</button>
+                    <button mat-menu-item (click)="selectHour2('14')">14</button>
+                    <button mat-menu-item (click)="selectHour2('15')">15</button>
+                    <button mat-menu-item (click)="selectHour2('16')">16</button>
+                    <button mat-menu-item (click)="selectHour2('17')">17</button>
+                    <button mat-menu-item (click)="selectHour2('18')">18</button>
+                    <button mat-menu-item (click)="selectHour2('19')">19</button>
+                </mat-menu> 
+
+                <button mat-button class="btn2" [matMenuTriggerFor]="minutesMenu2">{{selectedMinutes2 || 'Pick minutes'}}</button>
+                <mat-menu #minutesMenu2="matMenu">
+                    <button mat-menu-item (click)="selectMinutes2('00')">00</button>
+                    <button mat-menu-item (click)="selectMinutes2('10')">10</button>
+                    <button mat-menu-item (click)="selectMinutes2('20')">20</button>
+                    <button mat-menu-item (click)="selectMinutes2('30')">30</button>
+                    <button mat-menu-item (click)="selectMinutes2('40')">40</button>
+                    <button mat-menu-item (click)="selectMinutes2('50')">50</button>
+                </mat-menu>
+                </div>
+                <div class="sbmt">
+                    <button class="submit"  (click)="checkHours()" mat-button type="submit">Submit</button>
+                </div>
+            </div>  
+        </form>
+    </div>
+</div>

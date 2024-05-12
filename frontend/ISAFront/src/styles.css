@@ -3,4 +3,6 @@
 @import 'https://fonts.googleapis.com/css2?family=Verdana&display=swap" rel="stylesheet';
 @import 'https://fonts.googleapis.com/css2?family=Georgia&display=swap" rel="stylesheet';
 html, body { height: 100%; }
-body { margin: 0; font-family: Verdana, sans-serif; }
+body {
+    background-color: linear-gradient(to bottom, rgb(221, 234, 250), rgb(255, 255, 255));
+} 

@@ -23,7 +23,8 @@ public class Appointment {
     private String companyAdminFullName;
     private String duration;
     private LocalDateTime startDateAndTime;
-    private Boolean isBooked;
+    private LocalDateTime finishDateAndTime;
+    private Boolean isBooked = false;
 
     @ManyToOne
     @JoinColumn(name="user_id")
