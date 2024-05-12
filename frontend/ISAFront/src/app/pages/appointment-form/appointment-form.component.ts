@@ -117,6 +117,9 @@ export class AppointmentFormComponent {
           if(this.isSuccessful){
             alert("You successfuly added new appointment");
           }
+          else{
+            alert("Appointment se poklapa");
+          }
       }
     )
     console.log('VOO JE FINAL DTO',predefinedAppointmentDto);
