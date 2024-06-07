@@ -8,6 +8,6 @@ export interface CompanyDto{
     town:string,
     description:string,
     avgRating:number,
-    companyAdminList:User,
-    equipment:Equipment
+    companyAdminList:User[]
+    equipmentsCompany:Equipment[]
 }

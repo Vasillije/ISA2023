@@ -1,5 +1,7 @@
 package com.VasilijeISA.ISA2023.model;
 
+import com.VasilijeISA.ISA2023.dto.CompanyDto;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -28,6 +30,7 @@ public class Company {
 
     @OneToMany
     @JoinColumn(name = "company_id")
+    @JsonIgnore
     private List<User> companyAdminList;
     /* @OneToMany
     @JoinColumn(name = "company_id")
@@ -37,13 +40,29 @@ public class Company {
     private List<Complaint> complaints;
 
     @OneToMany(mappedBy = "companyAppointment")
+    @JsonIgnore
     private List<Appointment> appointments;
 
     @ManyToMany
+    @JsonIgnore
     @JoinTable(name = "company_eqipment",
             joinColumns = @JoinColumn(name = "company_id", referencedColumnName = "companyId"),
             inverseJoinColumns = @JoinColumn(name = "equipment_id",
                     referencedColumnName = "id"))
     private List<Equipment> equipmentsCompany;
 
+    public CompanyDto companyDtoMapper(Company company){
+        CompanyDto companyDto = new CompanyDto(
+                id = company.getId(),
+                name = company.getName(),
+                address = company.getAddress(),
+                town = company.getTown(),
+                description = company.getDescription(),
+                avgRating = company.getAvgRating(),
+                companyAdminList = company.getCompanyAdminList(),
+                equipmentsCompany = company.getEquipmentsCompany()
+        );
+        return companyDto;
+    }
 }
+

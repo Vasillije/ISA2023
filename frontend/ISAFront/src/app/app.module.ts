@@ -19,7 +19,9 @@ import { RegisterComponent } from './pages/register/register.component';
 import { AppointmentFormComponent } from './pages/appointment-form/appointment-form.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatMenuModule} from '@angular/material/menu';
-
+import { ShowAppointmentsComponent } from './pages/show-appointments/show-appointments.component';
+import {MatCardModule} from '@angular/material/card';
+import { ShowEquipmentComponent } from './pages/show-equipment/show-equipment.component';
 
 
 @NgModule({
@@ -28,7 +30,9 @@ import {MatMenuModule} from '@angular/material/menu';
     HomePageComponent,  
     LoginPageComponent,
     RegisterComponent,
-    AppointmentFormComponent
+    AppointmentFormComponent,
+    ShowAppointmentsComponent,
+    ShowEquipmentComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +48,8 @@ import {MatMenuModule} from '@angular/material/menu';
     HttpClientModule,
     MatExpansionModule,
     MatDatepickerModule,
-    MatMenuModule
+    MatMenuModule,
+    MatCardModule
   ],
   providers: [
     provideClientHydration()

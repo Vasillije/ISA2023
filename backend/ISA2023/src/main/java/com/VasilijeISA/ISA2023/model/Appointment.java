@@ -8,6 +8,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -34,6 +35,19 @@ public class Appointment {
     @JoinColumn(name="company_id")
     private Company companyAppointment;
 
-     @ManyToMany(mappedBy = "appointmentsEquipment")
+     @ManyToMany(mappedBy = "appointmentsEquipment",cascade = CascadeType.ALL)
     private List<Equipment> equipmentsAppointment;
+
+    public void addEquipment(Equipment equipment) {
+        if (equipmentsAppointment == null) {
+            equipmentsAppointment = new ArrayList<>();
+        }
+        if (!equipmentsAppointment.contains(equipment)) {
+            equipmentsAppointment.add(equipment);
+        }
+        if (!equipment.getAppointmentsEquipment().contains(this)) {
+            equipment.addAppointment(this);
+        }
+    }
+
 }

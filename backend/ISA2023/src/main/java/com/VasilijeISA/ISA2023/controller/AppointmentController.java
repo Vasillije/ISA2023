@@ -24,6 +24,13 @@ public class AppointmentController {
         return new ResponseEntity<>(appointments, HttpStatus.OK);
     }
 
+    @GetMapping("/byCompanyID/{id}")
+    public ResponseEntity<List<Appointment>> getByCompanyID(@PathVariable int id) {
+        List<Appointment> appointments = appointmentService.getByCompanyID(id);
+        return new ResponseEntity<>(appointments, HttpStatus.OK);
+    }
+
+
     @PostMapping("/addPredefinedAppointment")
     public Boolean addPredefinedAppointment(@RequestBody PredefinedAppointmentDto dto){
         return appointmentService.addPredefinedAppoitment(dto);

@@ -16,4 +16,5 @@ public interface CompanyRepository extends JpaRepository<Company, Integer> {
     @Query("select c from Company c where upper(c.town)=upper(:town)")
     List<Company> findCompaniesByTown (String town);
 
+
 }

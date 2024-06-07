@@ -38,8 +38,11 @@ public class User implements UserDetails {
     // private int penaltyPoints;
     //private enum userCategory;
     //ovo polje imaju registrovani korisnik i system admin i company admin
-    @OneToMany(mappedBy = "userAppointment")
-    List<Appointment> appointments;
+
+   @OneToMany(mappedBy = "userAppointment")
+   @JsonIgnore
+   List<Appointment> appointments;
+
     // @ManyToOne(fetch = FetchType.EAGER)
     //@JoinColumn(name = "company_id", nullable = true)
     //@OneToMany

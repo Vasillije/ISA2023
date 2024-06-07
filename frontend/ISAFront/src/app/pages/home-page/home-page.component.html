@@ -34,7 +34,9 @@
                 <mat-expansion-panel (opened)="isOpen = true"
                                      (closed)="isOpen = false">
                     <mat-expansion-panel-header>
-                        <mat-panel-title>{{c.name }} </mat-panel-title>
+                        <a [routerLink]="'/show-appointments/'+ c.id" target="_blank">
+                            <mat-panel-title>{{c.name}}</mat-panel-title>
+                        </a>
                         <mat-panel-description>{{c.description}} </mat-panel-description>
                     </mat-expansion-panel-header>
                     <p>Ovde ce ici oprema</p>

@@ -1,11 +1,13 @@
 package com.VasilijeISA.ISA2023.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 @Getter
 @Setter
@@ -23,11 +25,30 @@ public class Equipment {
     @ManyToMany(mappedBy = "equipmentsCompany")
     private List<Company> companies;
 
-    @ManyToMany(cascade = CascadeType.ALL)
+ /*   @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "equipment_appointment",
             joinColumns = @JoinColumn(name = "appointment_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "equipment_id",
                     referencedColumnName = "id"))
+    private List<Appointment> appointmentsEquipment;*/
+
+    @JsonIgnore
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "equipment_appointment",
+            joinColumns = @JoinColumn(name = "equipment_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "appointment_id", referencedColumnName = "id"))
     private List<Appointment> appointmentsEquipment;
+
+    public void addAppointment(Appointment appointment) {
+        if (appointmentsEquipment == null) {
+            appointmentsEquipment = new ArrayList<>();
+        }
+        if (!appointmentsEquipment.contains(appointment)) {
+            appointmentsEquipment.add(appointment);
+        }
+        if (!appointment.getEquipmentsAppointment().contains(this)) {
+            appointment.addEquipment(this);
+        }
+    }
 
 }

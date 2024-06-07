@@ -2,6 +2,7 @@ package com.VasilijeISA.ISA2023.service;
 
 import com.VasilijeISA.ISA2023.dto.PredefinedAppointmentDto;
 import com.VasilijeISA.ISA2023.model.Appointment;
+import com.VasilijeISA.ISA2023.model.Company;
 import com.VasilijeISA.ISA2023.repository.AppointmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,8 +13,16 @@ import java.util.List;
 public class AppointmentService {
     @Autowired
     private AppointmentRepository appointmentRepository;
+    @Autowired
+    private CompanyService companyService;
+
     public List<Appointment> getAll(){
         return appointmentRepository.findAll();
+    }
+
+    public List<Appointment> getByCompanyID(int id){
+        Company kompanija = companyService.FindCompanyById(id);
+        return appointmentRepository.findAppointmentsByCompanyAppointment(kompanija);
     }
 
     public boolean addPredefinedAppoitment(PredefinedAppointmentDto appointment) {

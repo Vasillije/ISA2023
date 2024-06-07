@@ -18,6 +18,7 @@ public class CompanyController {
     @Autowired
     private CompanyService companyService;
 
+
     @GetMapping("/all")
     public ResponseEntity<List<Company>> getAll(){
         List<Company> companies = companyService.getAll();

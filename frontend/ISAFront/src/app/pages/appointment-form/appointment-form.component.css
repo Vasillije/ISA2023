@@ -1,12 +1,9 @@
 .background{
-    background-color: linear-gradient(to bottom, rgb(221, 234, 250), rgb(255, 255, 255));
+    background: linear-gradient(to bottom, rgb(221, 234, 250), rgb(255, 255, 255));
     display: block;
     justify-content: center;
     align-items: center;
     height: 100%;
-    /* margin-left: -7px;
-    margin-right: -7px; */
-
 }
 
 .center{

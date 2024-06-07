@@ -1,0 +1,17 @@
+<div class="background" style="background: linear-gradient(to bottom, rgb(221, 234, 250), rgb(255, 255, 255));">
+    <div class="center">
+        <h1><b>PICK EQUIPMENT</b></h1>
+        <form #equipmentForm="ngForm" (ngSubmit)="validation(equipmentForm.value)">
+            <mat-card>
+                <mat-card-content *ngFor="let e of equipmentsLeft; let i = index" class="equipment-content">
+                    <span class="equipment-text">{{ e.name }}, {{e.quantity}} more left</span>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Equipment quantity</mat-label>
+                        <input class="text" matInput type="text"  [name]="'quantity' + i" [(ngModel)]="quantities[i]" required>
+                    </mat-form-field>
+                </mat-card-content>
+            </mat-card>
+            <div class="button-container"><button class="submit-button" mat-button type="submit" (click)="validation">Submit</button></div>
+        </form>
+    </div>
+</div>
