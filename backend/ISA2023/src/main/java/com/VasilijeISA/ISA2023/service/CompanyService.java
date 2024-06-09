@@ -32,9 +32,6 @@ public class CompanyService {
             }
         }
         return null;
-        //Company company = companyRepository.getById(id);
-        //Company company = companyRepository.findById(id).orElseThrow(() -> new RuntimeException("Company not found"));
-        //return company;
     }
 
     public List<Company> search(SearchDto dto) {
@@ -46,7 +43,7 @@ public class CompanyService {
         }
         if(town.equals("")){
             return companyRepository.findCompaniesByName(name);
-        };
+        }
 
         return companyRepository.search(name, town);
     }

@@ -1,5 +1,6 @@
 package com.VasilijeISA.ISA2023.controller;
 
+import com.VasilijeISA.ISA2023.dto.CancelAppointmentDto;
 import com.VasilijeISA.ISA2023.dto.PredefinedAppointmentDto;
 import com.VasilijeISA.ISA2023.model.Appointment;
 import com.VasilijeISA.ISA2023.service.AppointmentService;
@@ -24,16 +25,27 @@ public class AppointmentController {
         return new ResponseEntity<>(appointments, HttpStatus.OK);
     }
 
-    @GetMapping("/byCompanyID/{id}")
-    public ResponseEntity<List<Appointment>> getByCompanyID(@PathVariable int id) {
-        List<Appointment> appointments = appointmentService.getByCompanyID(id);
+    @GetMapping("/validByCompanyID/{id}")
+    public ResponseEntity<List<Appointment>> getValidByCompanyID(@PathVariable int id) {
+        List<Appointment> appointments = appointmentService.getValidByCompanyID(id);
         return new ResponseEntity<>(appointments, HttpStatus.OK);
     }
 
+    @GetMapping("validScheduledByUserID/{id}")
+    public ResponseEntity<List<Appointment>> getValidScheduledByUserID(@PathVariable Long id) {
+        List<Appointment> appointments = appointmentService.getValidScheduledByUserID(id);
+        return new ResponseEntity<>(appointments, HttpStatus.OK);
+    }
 
     @PostMapping("/addPredefinedAppointment")
     public Boolean addPredefinedAppointment(@RequestBody PredefinedAppointmentDto dto){
         return appointmentService.addPredefinedAppoitment(dto);
+    }
+
+    @PostMapping("/cancelAppointment")
+    public ResponseEntity<List<Appointment>> cancelAppointment(@RequestBody CancelAppointmentDto c){
+        appointmentService.cancelAppointment(c);
+        return this.getValidScheduledByUserID(c.getUserId());
     }
 
 }

@@ -22,6 +22,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import { ShowAppointmentsComponent } from './pages/show-appointments/show-appointments.component';
 import {MatCardModule} from '@angular/material/card';
 import { ShowEquipmentComponent } from './pages/show-equipment/show-equipment.component';
+import { ScheduledAppointmentsComponent } from './pages/scheduled-appointments/scheduled-appointments.component';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { ShowEquipmentComponent } from './pages/show-equipment/show-equipment.co
     RegisterComponent,
     AppointmentFormComponent,
     ShowAppointmentsComponent,
-    ShowEquipmentComponent
+    ShowEquipmentComponent,
+    ScheduledAppointmentsComponent
   ],
   imports: [
     BrowserModule,

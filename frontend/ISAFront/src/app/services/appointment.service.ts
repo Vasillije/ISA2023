@@ -3,6 +3,7 @@ import { PredefinedAppointmentDto } from '../dto/PredefinedAppointmentDto';
 import { HttpClient } from '@angular/common/http';
 import { Appointment } from '../model/appointment';
 import { Observable } from 'rxjs';
+import { CancelAppointmentDto } from '../dto/CancelAppointmentDto';
 
 @Injectable({
   providedIn: 'root'
@@ -20,8 +21,16 @@ export class AppointmentService {
     return this.http.get<Appointment[]>(this.url + '/api/appointments/all');
   }
 
-  getByCompanyId(id:number) : Observable<Appointment[]>{
-    return this.http.get<Appointment[]>(this.url + `/api/appointments/byCompanyID/${id}`);
+  getValidByCompanyId(id:number) : Observable<Appointment[]>{
+    return this.http.get<Appointment[]>(this.url + `/api/appointments/validByCompanyID/${id}`);
+  }
+
+  getValidScheduledByUserId(id : number) : Observable<Appointment[]>{
+    return this.http.get<Appointment[]>(this.url + `/api/appointments/validScheduledByUserID/${id}`);
+  }
+
+  cancelAppointment(c : CancelAppointmentDto){
+    return this.http.post<Appointment[]>(this.url + '/api/appointments/cancelAppointment', c);
   }
 
 }

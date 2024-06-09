@@ -25,7 +25,7 @@ export class ShowAppointmentsComponent {
   }
 
   getAppointmentsByCompanyID(id: number): void {
-    this.appointmentService.getByCompanyId(id).subscribe(
+    this.appointmentService.getValidByCompanyId(id).subscribe(
       (data) => {
         this.appointments = data;
       },

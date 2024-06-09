@@ -26,6 +26,7 @@ public class Appointment {
     private LocalDateTime startDateAndTime;
     private LocalDateTime finishDateAndTime;
     private Boolean isBooked = false;
+    private Boolean isExpired = false;
 
     @ManyToOne
     @JoinColumn(name="user_id")

@@ -35,10 +35,7 @@ public class User implements UserDetails {
     private String companyInfo;
     @Column(name = "enabled")
     private boolean enabled;
-    // private int penaltyPoints;
-    //private enum userCategory;
-    //ovo polje imaju registrovani korisnik i system admin i company admin
-
+    private int penaltyPoints;
    @OneToMany(mappedBy = "userAppointment")
    @JsonIgnore
    List<Appointment> appointments;
@@ -49,13 +46,9 @@ public class User implements UserDetails {
     //@JoinColumn(name = "user_id")
     //private List<Complaint> complaintList;
 
-
-
     //@ManyToOne
     //@JoinColumn(name = "role_id")
     //private Role role;
-
-
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "user_role",

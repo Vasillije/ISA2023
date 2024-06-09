@@ -1,7 +1,11 @@
 export interface UserRequestDto{
-    id : number;
     password : string;
     name : string;
     surname : string;
     email : string;
+    city : string;
+    country : string;
+    phoneNumber : string;
+    profession : string;
+    companyInfo : string;
 }

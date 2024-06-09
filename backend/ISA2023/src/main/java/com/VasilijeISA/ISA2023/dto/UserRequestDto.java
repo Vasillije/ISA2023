@@ -6,15 +6,13 @@ import lombok.Setter;
 @Getter
 @Setter
 public class UserRequestDto {
-
-    private Long id;
-
     private String password;
-
     private String name;
-
     private String surname;
-
     private String email;
-
+    private String city;
+    private String country;
+    private String phoneNumber;
+    private String profession;
+    private String companyInfo;
 }

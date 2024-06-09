@@ -14,6 +14,8 @@ export interface User{
     phoneNumber:string,
     profession:string,
     companyInfo:string,
+    enabled:boolean,
+    penaltyPoints:number,
     appointments:Appointment[],
     roles:Role[],
     complaints: Complaint[],

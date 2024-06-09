@@ -12,52 +12,48 @@ import { Router } from '@angular/router';
 })
 export class RegisterComponent {
 
-  userDto : UserRequestDto = {
-    password: '',
-    id: 0,
-    name: '',
-    surname: '',
-    email: ''
-  }
   constructor(private authService : AuthService, private router: Router){}
   user!: User;
 
 
   register(result : any){
-    var emailElement = document.getElementById("email") as HTMLInputElement;
-    var email : string = emailElement ? emailElement.value : '';
-   
-    var passwordElement = document.getElementById("password") as HTMLInputElement;
-    var password : string = passwordElement ? passwordElement.value : ''; 
 
-    var retypedPasswordElement = document.getElementById("retypedpassword") as HTMLInputElement;
-    var retypedPassword : string = retypedPasswordElement ? retypedPasswordElement.value : ''; 
+    const userDto : UserRequestDto = {
+      password: result.password,
+      name: result.name,
+      surname: result.surname,
+      email: result.email,
+      city: result.city,
+      country: result.country,
+      phoneNumber: result.phoneNumber,
+      profession: result.profession,
+      companyInfo: result.companyInfo
+    }
 
-    var nameElement = document.getElementById("name") as HTMLInputElement;
-    var name : string = nameElement ? nameElement.value : '';
-
-    var surnameElement = document.getElementById("surname") as HTMLInputElement;
-    var surname : string = surnameElement ? surnameElement.value : '';
-
-    if(password != retypedPassword){
-      alert("Passwords doesnt match");
+    if(result.password != result.retypedpassword){
+      alert("Passwords dont match");
       return;
     }
 
-    if (email == '' || password == '' || name == '' || surname == '') {
+    if (result.email == '' || result.password == '' || result.name == '' || result.surname == '' || result.city == '' || result.country == '' 
+      || result.phoneNumber == '' || result.profession == '' || result.companyInfo == '') {
       alert('You must fill in all fields.');
       return; 
     }
 
-    this.userDto.email = email;
-    this.userDto.password = password;
-    this.userDto.name = name;
-    this.userDto.surname = surname;
     
-    this.authService.register(this.userDto).subscribe((data)=>{
+    this.authService.register(userDto).subscribe((data)=>{
       this.user=data;
       alert('User succlesfully registered');
       this.router.navigate(['/login']);
-    });
+    },
+    (error) => {
+      if (error.status === 409) {
+        alert('User with this email already exists');
+      } else {
+        alert('An error occurred. Please try again later.');
+      }
+    }
+  );
   }
 }

@@ -118,11 +118,10 @@ export class AppointmentFormComponent {
             alert("You successfuly added new appointment");
           }
           else{
-            alert("Appointment se poklapa");
+            alert("You cant add appointmnet because it overpalses with other appointments");
           }
       }
     )
-    console.log('VOO JE FINAL DTO',predefinedAppointmentDto);
 
   }
 
