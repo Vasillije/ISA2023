@@ -41,6 +41,7 @@ export class RegisterComponent {
       return; 
     }
 
+    console.log(userDto);
     
     this.authService.register(userDto).subscribe((data)=>{
       this.user=data;
