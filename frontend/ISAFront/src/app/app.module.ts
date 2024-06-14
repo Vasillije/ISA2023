@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
+
+import { MatSelectModule } from '@angular/material/select';
 import { AppComponent } from './app.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
@@ -55,7 +57,8 @@ import { UserProfileComponent } from './pages/user-profile/user-profile.componen
     MatExpansionModule,
     MatDatepickerModule,
     MatMenuModule,
-    MatCardModule
+    MatCardModule,
+    MatSelectModule
   ],
   providers: [
     provideClientHydration()

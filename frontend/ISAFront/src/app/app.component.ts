@@ -14,6 +14,9 @@ export class AppComponent {
   redirectToRegister(){
     this.router.navigate(['/register']);
   }
+  redirectToAppointmentForm(){
+    this.router.navigate(['/appointment-form']);
+  }
 
   redirectToLogin(){
     this.router.navigate(['/login']);

@@ -1,13 +1,28 @@
 <div class="backgroundcol">
-    <div class="center">
-        <form #appointmentForm="ngForm" class="form">
-            <h1 class="title"><b>MAKE COMPLAINT</b></h1>
-            <button class="menu" mat-button [matMenuTriggerFor]="menu">{{ selectedMenuItem || 'Menu' }}</button>
-            <mat-menu #menu="matMenu">
-              <button mat-menu-item *ngFor="let company of companies" (click)="changeMenu(company.name)">Company: {{company.name}}</button>
-              <button mat-menu-item *ngFor="let admin of companyAdminsList" (click)="changeMenu(admin.name)">Admin: {{admin}}</button>
-            </mat-menu>
-            <textarea matInput name="complaint" class="complaintText"></textarea>
-          </form>
-    </div>
+  <div class="center">
+      <form #appointmentForm="ngForm" class="form" (ngSubmit)="submitForm(appointmentForm)">
+          <h1 class="title"><b>MAKE COMPLAINT</b></h1>
+          <mat-form-field appearance="fill">
+            <mat-label>Menu</mat-label>
+            <mat-select  [(value)]="selectedMenuItem">
+              <mat-optgroup label="Companies">
+                <mat-option *ngFor="let company of companies" [value]="company.name" (click)="changeMenuCompany(company)">
+                  Company: {{ company.name }}
+                </mat-option>
+              </mat-optgroup>
+              <mat-optgroup label="Admins">
+                <mat-option *ngFor="let admin of companyAdminsList2" [value]="admin.name + ' ' + admin.surname" (click)="changeMenuAdmin(admin)">
+                  Admin: {{ admin.name + ' ' + admin.surname }}
+                </mat-option>
+              </mat-optgroup>
+            </mat-select>
+          </mat-form-field>
+          
+          <mat-form-field appearance="fill">
+            <mat-label>Enter complaint text</mat-label>
+          <textarea matInput name="complaint" class="complaintText" [(ngModel)]="complaintText"  ></textarea>
+        </mat-form-field>
+          <button mat-button type="submit">Submit</button>
+      </form>
+  </div>
 </div>

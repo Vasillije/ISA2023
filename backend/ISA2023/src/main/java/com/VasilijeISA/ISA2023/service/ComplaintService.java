@@ -2,6 +2,7 @@ package com.VasilijeISA.ISA2023.service;
 
 import com.VasilijeISA.ISA2023.model.Appointment;
 import com.VasilijeISA.ISA2023.model.Company;
+import com.VasilijeISA.ISA2023.model.Complaint;
 import com.VasilijeISA.ISA2023.model.User;
 import com.VasilijeISA.ISA2023.repository.AppointmentRepository;
 import com.VasilijeISA.ISA2023.repository.ComplaintRepository;
@@ -26,6 +27,9 @@ public class ComplaintService {
 
     @Autowired
     AppointmentService appointmentService;
+
+    @Autowired
+    private EmailService emailService;
 
     public List<Company> getUsersCompanies(Long userId){
         User user = userRepository.findById(userId).orElse(null);
@@ -61,6 +65,11 @@ public class ComplaintService {
             admins.add(a.getCompanyAdmin());
         }
         return admins;
+    }
+    public Complaint addComplaint(Complaint c){
+        complaintRepository.save(c);
+        emailService.sendSimpleEmail("kiara.dubuque68@ethereal.email","complaint",c.getDescription());
+        return c;
     }
 
 }

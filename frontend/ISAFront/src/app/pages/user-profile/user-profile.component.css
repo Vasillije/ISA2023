@@ -25,3 +25,17 @@ button{
     background-color: rgb(221, 234, 250);
     margin-right: 12%;
 }
+
+.user-info{
+    margin-top: 73px;
+}
+
+.label{
+    font-size: large;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.button{
+    background: white;
+}

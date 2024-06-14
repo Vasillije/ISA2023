@@ -1,4 +1,4 @@
-<div class="backgroundcol">
+<div class="backgroundcol" style="display: flex;">
     <div class="register">
         <h1 style="margin-bottom: 25px; margin-top: -50px;"><b>USER INFO</b></h1>
         <form #updateForm="ngForm" (ngSubmit)="update(updateForm.value)">
@@ -37,4 +37,24 @@
             <button mat-button type="submit" (click)="update(updateForm.value)">Submit</button>
         </form>
     </div>
+    
+    <div class="user-info" style="margin-left: 20px; flex: 1;">
+        <div *ngIf="role == 'ROLE_USER'">
+            <div class="user-info" style="flex: 1; max-width: 300px; margin-left: 20px;">
+                <div style="display: flex; align-items: center; margin-bottom: 15px;">
+                    <label style="margin-right: 10px;" class="label">PENALTY POINTS:</label>
+                    <mat-form-field appearance="fill" style="flex: 1;">
+                        <input matInput type="text" [value]="user.penaltyPoints" readonly>
+                    </mat-form-field>  
+                </div>
+                <div style="display: flex; align-items: center;">
+                    <label style="margin-right: 10px;" class="label">ROLE:</label>
+                    <mat-form-field appearance="fill" style="flex: 1;">
+                        <input matInput [value]="role" readonly>
+                    </mat-form-field>
+                </div>
+                
+                <button mat-button class="button" (click)="viewScheduledAppointments()">View scheduled appointments</button>
+            </div>
+        </div>
     </div>

@@ -37,6 +37,7 @@ public class Company {
     private List<Complaint> complaintList; // ovo je bidirekciono ne moze ovako imas listu ovde
     */
     @OneToMany(mappedBy = "companyComplaint")
+    @JsonIgnore
     private List<Complaint> complaints;
 
     @OneToMany(mappedBy = "companyAppointment")

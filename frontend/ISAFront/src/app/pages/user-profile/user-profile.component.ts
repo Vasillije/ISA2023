@@ -17,6 +17,7 @@ export class UserProfileComponent {
   user! : User;
   penaltyPoints! : number;
   appointments : Appointment[] = [];
+  role! : string;
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(data => {
@@ -30,6 +31,7 @@ export class UserProfileComponent {
     this.userService.getUserById(id).subscribe(
       (data) => {
         this.user = data
+        this.role = this.user.roles[0].name;
         this.penaltyPoints = this.user.penaltyPoints;
         this.appointments = this.user.appointments;
       }
@@ -42,7 +44,7 @@ export class UserProfileComponent {
       password: result.password,
       name: result.name,
       surname: result.surname,
-      town: result.town,
+      town: result.city,
       country: result.country,
       phoneNumber: result.phoneNumber,
       profession: result.profession,
@@ -55,6 +57,10 @@ export class UserProfileComponent {
         console.error('There was an error!', error);
       }
     );
+  }
+
+  viewScheduledAppointments(){
+    this.router.navigate(['scheduled-appointments', this.user.id]);
   }
 
 }

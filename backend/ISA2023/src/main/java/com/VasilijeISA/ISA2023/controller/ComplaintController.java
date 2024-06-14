@@ -1,6 +1,7 @@
 package com.VasilijeISA.ISA2023.controller;
 
 import com.VasilijeISA.ISA2023.model.Company;
+import com.VasilijeISA.ISA2023.model.Complaint;
 import com.VasilijeISA.ISA2023.model.User;
 import com.VasilijeISA.ISA2023.service.ComplaintService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +24,11 @@ public class ComplaintController {
         List<Company> companies = complaintService.getUsersCompanies(id);
         return new ResponseEntity<>(companies, HttpStatus.OK);
     }
-
+    @PostMapping("/addcomplaint")
+    public ResponseEntity<Complaint> search(@RequestBody Complaint complaint){
+        Complaint complaint1 = complaintService.addComplaint(complaint);
+        return new ResponseEntity<>(complaint1, HttpStatus.OK);
+    }
 
     @GetMapping("/appointmentsAdmin/{id}")
    public ResponseEntity<List<User>> companyAdmin(@PathVariable Long id){
