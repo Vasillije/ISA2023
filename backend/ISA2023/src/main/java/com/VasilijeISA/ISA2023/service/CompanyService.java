@@ -3,7 +3,9 @@ package com.VasilijeISA.ISA2023.service;
 import com.VasilijeISA.ISA2023.dto.CompanyDto;
 import com.VasilijeISA.ISA2023.dto.SearchDto;
 import com.VasilijeISA.ISA2023.model.Company;
+import com.VasilijeISA.ISA2023.repository.AppointmentRepository;
 import com.VasilijeISA.ISA2023.repository.CompanyRepository;
+import com.VasilijeISA.ISA2023.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +16,12 @@ import java.util.List;
 public class CompanyService {
     @Autowired
     private CompanyRepository companyRepository;
+
+    @Autowired
+    UserRepository userRepository;
+
+    @Autowired
+    private AppointmentRepository appointmentRepository;
 
     public List<Company> getAll() {
         List<Company> companies = companyRepository.findAll();
@@ -47,4 +55,5 @@ public class CompanyService {
 
         return companyRepository.search(name, town);
     }
+
 }

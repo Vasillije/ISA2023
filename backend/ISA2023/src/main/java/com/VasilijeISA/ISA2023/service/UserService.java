@@ -1,5 +1,6 @@
 package com.VasilijeISA.ISA2023.service;
 
+import com.VasilijeISA.ISA2023.dto.UpdateUserDto;
 import com.VasilijeISA.ISA2023.dto.UserRequestDto;
 import com.VasilijeISA.ISA2023.exeption.UserAlreadyExistsException;
 import com.VasilijeISA.ISA2023.model.Role;
@@ -26,6 +27,10 @@ public class UserService {
     public User findByEmail(String email) throws UsernameNotFoundException {
         return userRepository.findByEmail(email);
     }
+
+    public User getUserById(Long id){
+        return userRepository.findById(id).orElse(null);
+    }
     public User save(UserRequestDto userRequest) {
         User existingUser = userRepository.findByEmail(userRequest.getEmail());
         if(existingUser != null){
@@ -47,5 +52,26 @@ public class UserService {
         u.setPenaltyPoints(0);
         return this.userRepository.save(u);
     }
+
+    public User update(UpdateUserDto u){
+        User user = userRepository.findById(u.getId()).orElse(null);
+        user.setPassword(passwordEncoder.encode(u.getPassword()));
+        user.setName(u.getName());
+        user.setSurname(u.getSurname());
+        user.setTown(u.getTown());
+        user.setCountry(u.getCountry());
+        user.setPhoneNumber(u.getPhoneNumber());
+        user.setProfession(u.getProfession());
+        user.setCompanyInfo(u.getCompanyInfo());
+        userRepository.save(user);
+        return user;
+    }
+
+
+    private String town;
+    private String country;
+    private String phoneNumber;
+    private String profession;
+    private String companyInfo;
 
 }

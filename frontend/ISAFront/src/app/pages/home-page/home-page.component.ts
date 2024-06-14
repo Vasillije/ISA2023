@@ -6,6 +6,7 @@ import { SearchDto } from '../../dto/searchDto';
 import { HttpErrorResponse } from '@angular/common/http';
 import { AuthService } from '../../services/auth.service';
 import { CompanyDto } from '../../dto/CompanyDto';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home-page',
@@ -16,9 +17,9 @@ export class HomePageComponent {
 
   isOpen =false
   companies:Company[]=[]
-  companiesDto : CompanyDto[] = []
+  userId : number = this.authService.getUserId()!;
 
-  constructor(private companyService : CompanyService, public authService : AuthService){}
+  constructor(private companyService : CompanyService, public authService : AuthService, private router: Router){}
 
   ngOnInit(): void {
     this.companyService.getAll().subscribe((data) => {
@@ -39,6 +40,17 @@ export class HomePageComponent {
       alert(error.message);
     })
    console.log(result);
+  }
+
+  //ovde se ne uzima id iz jwt nego se hardkoduje - ispraviti
+  complaintClick(){
+    if(this.userId!=null){
+    this.router.navigate(['/make-complaint/', this.userId]);
+    }
+  }
+
+  userProfile(){
+    this.router.navigate(['/user-profile/', this.userId]);
   }
 
 }

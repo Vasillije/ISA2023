@@ -38,8 +38,9 @@ public class AppointmentController {
     }
 
     @PostMapping("/addPredefinedAppointment")
-    public Boolean addPredefinedAppointment(@RequestBody PredefinedAppointmentDto dto){
-        return appointmentService.addPredefinedAppoitment(dto);
+    public ResponseEntity<Boolean> addPredefinedAppointment(@RequestBody PredefinedAppointmentDto dto){
+        boolean a = appointmentService.addPredefinedAppoitment(dto);
+        return new ResponseEntity<>(a, HttpStatus.OK);
     }
 
     @PostMapping("/cancelAppointment")

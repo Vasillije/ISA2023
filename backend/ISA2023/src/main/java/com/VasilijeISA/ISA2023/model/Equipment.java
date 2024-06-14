@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.List;
 @Getter
 @Setter
@@ -34,21 +33,11 @@ public class Equipment {
 
     @JsonIgnore
     @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "equipment_appointment",
+    @JoinTable(name = "equipments_appointment",
             joinColumns = @JoinColumn(name = "equipment_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "appointment_id", referencedColumnName = "id"))
     private List<Appointment> appointmentsEquipment;
 
-    public void addAppointment(Appointment appointment) {
-        if (appointmentsEquipment == null) {
-            appointmentsEquipment = new ArrayList<>();
-        }
-        if (!appointmentsEquipment.contains(appointment)) {
-            appointmentsEquipment.add(appointment);
-        }
-        if (!appointment.getEquipmentsAppointment().contains(this)) {
-            appointment.addEquipment(this);
-        }
-    }
+
 
 }

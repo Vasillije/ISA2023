@@ -5,6 +5,7 @@ import { User } from '../model/user';
 import { JwtAuthenticationRequestDto } from '../dto/JwtAuthenticationRequestDto';
 import { UserTokenStateDto } from '../dto/UserTokenStateDto';
 import { Router } from '@angular/router';
+import { jwtDecode } from 'jwt-decode';
 
 @Injectable({
   providedIn: 'root'
@@ -36,6 +37,40 @@ export class AuthService {
   
   tokenIsPresent() {
     return this.access_token != undefined && this.access_token != null;
+  }
+
+  getTokenInfo() : any{
+    const jwt =localStorage.getItem('JWT');
+    if(jwt != null){
+      const tokenInfo = jwtDecode(jwt);
+      console.log(tokenInfo)
+      return tokenInfo;
+    }
+  }
+
+  getUserId() : number | null {
+    const tokenInfo = this.getTokenInfo();
+    if (tokenInfo) {
+      console.log(tokenInfo.userId)
+      return tokenInfo.userId;
+    }
+    return null;
+  }
+
+  getSubject() : string | null {
+    const tokenInfo = this.getTokenInfo();
+    if (tokenInfo) {
+      return tokenInfo.sub;
+    }
+    return null;
+  }
+
+  getCompanyId() : string | null {
+    const tokenInfo = this.getTokenInfo();
+    if (tokenInfo) {
+      return tokenInfo.companyId;
+    }
+    return null;
   }
 
   getToken() {

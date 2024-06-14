@@ -28,6 +28,7 @@ export class ShowAppointmentsComponent {
     this.appointmentService.getValidByCompanyId(id).subscribe(
       (data) => {
         this.appointments = data;
+        console.log(this.appointments)
       },
       (error) => {
         console.error('There was an error!', error);
@@ -35,8 +36,8 @@ export class ShowAppointmentsComponent {
     );
   }
 
-  showEquipment(){
-    this.router.navigate(['show-equipment/' + this.companyIdNumber]);
+  showEquipment(id: number){
+    this.router.navigate(['show-equipment', id, this.companyIdNumber]);
   }
 
 }

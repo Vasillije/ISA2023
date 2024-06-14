@@ -44,7 +44,14 @@ public class AuthenticationController {
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
         User user = (User) authentication.getPrincipal();
-        String jwt = tokenUtils.generateToken(user.getUsername());
+        String jwt;
+        if( user.getCompany()!=null){
+         jwt = tokenUtils.generateToken(user.getName(), user.getSurname() ,user.getId(), user.getCompany().getId());
+        }
+        else {
+             jwt = tokenUtils.generateToken(user.getName(), user.getSurname() ,user.getId(), 0L);
+
+    }
         int expiresIn = tokenUtils.getExpiredIn();
 
         return ResponseEntity.ok(new UserTokenStateDto(jwt, expiresIn));

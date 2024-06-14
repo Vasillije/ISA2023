@@ -67,6 +67,10 @@ public class User implements UserDetails {
     private Company company;
 
     @JsonIgnore
+    @OneToMany(mappedBy = "companyAdmin")
+    private List<Appointment> createdAppointments;
+
+    @JsonIgnore
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return this.roles;
@@ -103,4 +107,3 @@ public class User implements UserDetails {
 
 
 }
-

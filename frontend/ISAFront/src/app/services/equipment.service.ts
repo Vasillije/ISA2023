@@ -25,6 +25,7 @@ export class EquipmentService {
   }
 
   purchase(p : PurchaseEquipmentDto){
-    return this.http.post<boolean>(this.url + '/api/equipment/purchase', p);
+    console.log('ovo je dto '+p.appointmentId);
+    return this.http.post<Boolean>(this.url + '/api/equipment/purchase', p);
   }
 }

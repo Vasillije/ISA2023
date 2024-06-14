@@ -45,7 +45,7 @@ public class Company {
 
     @ManyToMany
     @JsonIgnore
-    @JoinTable(name = "company_eqipment",
+    @JoinTable(name = "company_eqipments",
             joinColumns = @JoinColumn(name = "company_id", referencedColumnName = "companyId"),
             inverseJoinColumns = @JoinColumn(name = "equipment_id",
                     referencedColumnName = "id"))

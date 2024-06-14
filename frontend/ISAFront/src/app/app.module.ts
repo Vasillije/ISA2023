@@ -23,6 +23,8 @@ import { ShowAppointmentsComponent } from './pages/show-appointments/show-appoin
 import {MatCardModule} from '@angular/material/card';
 import { ShowEquipmentComponent } from './pages/show-equipment/show-equipment.component';
 import { ScheduledAppointmentsComponent } from './pages/scheduled-appointments/scheduled-appointments.component';
+import { MakeComplaintComponent } from './pages/make-complaint/make-complaint.component';
+import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 
 
 @NgModule({
@@ -34,7 +36,9 @@ import { ScheduledAppointmentsComponent } from './pages/scheduled-appointments/s
     AppointmentFormComponent,
     ShowAppointmentsComponent,
     ShowEquipmentComponent,
-    ScheduledAppointmentsComponent
+    ScheduledAppointmentsComponent,
+    MakeComplaintComponent,
+    UserProfileComponent
   ],
   imports: [
     BrowserModule,

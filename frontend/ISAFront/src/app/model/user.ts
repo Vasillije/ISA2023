@@ -19,5 +19,6 @@ export interface User{
     appointments:Appointment[],
     roles:Role[],
     complaints: Complaint[],
-    company: Company
+    company: Company,
+    createdAppointments : Appointment[];
 }

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { provideNativeDateAdapter } from '@angular/material/core';
 import { PredefinedAppointmentDto } from '../../dto/PredefinedAppointmentDto';
 import { AppointmentService } from '../../services/appointment.service';
+import { AuthService } from '../../services/auth.service';
 
 
 @Component({
@@ -14,9 +15,13 @@ import { AppointmentService } from '../../services/appointment.service';
 
 export class AppointmentFormComponent {
 
-  constructor(private appointmentService : AppointmentService){}
+  constructor(private appointmentService : AppointmentService, private authService : AuthService){}
 
   //moram ovde da dodam companyAdminFullName
+
+  ngOnInit(){
+    this.authService.getTokenInfo();
+  }
 
   isSuccessful! : Boolean; 
   selectedHour: string = '';
@@ -105,10 +110,12 @@ export class AppointmentFormComponent {
     finishDate.setMilliseconds(0);
     
     var predefinedAppointmentDto : PredefinedAppointmentDto = {
-      companyAdminFullName: '',
+      companyAdminFullName: this.authService.getSubject() == null ? '' : this.authService.getSubject()!,
       duration: this.calculateDuration(hour1, minutes1, hour2, minutes2).toString(),
       startDateAndTime: startDate,
-      finishDateAndTime: finishDate
+      finishDateAndTime: finishDate,
+      adminId: this.authService.getUserId()!,
+      companyId : Number(this.authService.getCompanyId()!)
     }
 
     this.appointmentService.addPredefinedAppointment(predefinedAppointmentDto).subscribe(

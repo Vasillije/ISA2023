@@ -14,6 +14,7 @@ export class AppointmentService {
   constructor(private http: HttpClient) { }
 
   addPredefinedAppointment(s: PredefinedAppointmentDto){
+    console.log(s)
     return this.http.post<Boolean>(this.url + '/api/appointments/addPredefinedAppointment', s);
   }
 

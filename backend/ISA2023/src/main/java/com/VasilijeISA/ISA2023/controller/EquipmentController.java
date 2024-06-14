@@ -34,17 +34,22 @@ public class EquipmentController {
         Equipment equipment = equipmentService.getByID(id);
         return new ResponseEntity<>(equipment, HttpStatus.OK);
     }
-    @PostMapping("/purchase")
-    public ResponseEntity<Boolean> purchase(@RequestBody PurchaseEquipmentDto p) {
-        try {
-            Boolean result = equipmentService.purchase(p);
-            if (result) {
-                return new ResponseEntity<>(true, HttpStatus.OK);
-            } else {
-                return new ResponseEntity<>(false, HttpStatus.BAD_REQUEST);
+
+        @PostMapping("/purchase")
+        public ResponseEntity<Boolean> purchase(@RequestBody PurchaseEquipmentDto p) {
+            try {
+                Boolean result = equipmentService.purchase(p);
+                if (result) {
+                    return new ResponseEntity<Boolean>(true, HttpStatus.OK);
+                } else {
+                    return new ResponseEntity<Boolean>(false, HttpStatus.BAD_REQUEST);
+                }
+            } catch (IllegalArgumentException e) {
+                return new ResponseEntity<Boolean>(false, HttpStatus.BAD_REQUEST);
+            } catch (Exception e) {
+                return new ResponseEntity<Boolean>(false, HttpStatus.INTERNAL_SERVER_ERROR);
             }
-        } catch (Exception e) {
-            return new ResponseEntity<>(false, HttpStatus.INTERNAL_SERVER_ERROR);
-        }
+
     }
+
 }

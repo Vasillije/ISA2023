@@ -9,8 +9,9 @@ export interface Appointment{
     startDateAndTime:Date,
     finishDateAndTime:Date,
     isBooked:boolean,
-    isExpired: boolean,
     userAppointment:User,
     companyAppointment:Company,
-    equipmentsAppointment:Equipment[]
+    equipmentsAppointment:Equipment[],
+    companyAdmin : User ;
+
 }

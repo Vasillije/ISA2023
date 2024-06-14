@@ -6,6 +6,7 @@ import com.VasilijeISA.ISA2023.model.Appointment;
 import com.VasilijeISA.ISA2023.model.Company;
 import com.VasilijeISA.ISA2023.model.User;
 import com.VasilijeISA.ISA2023.repository.AppointmentRepository;
+import com.VasilijeISA.ISA2023.repository.CompanyRepository;
 import com.VasilijeISA.ISA2023.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,6 +23,9 @@ public class AppointmentService {
     private CompanyService companyService;
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private CompanyRepository companyRepository;
+
 
     public List<Appointment> getAll(){
         return appointmentRepository.findAll();
@@ -77,6 +81,7 @@ public class AppointmentService {
         userRepository.save(user);
     }
 
+
     public boolean addPredefinedAppoitment(PredefinedAppointmentDto appointment) {
         List<Appointment> appointments = this.getAll();
 
@@ -111,6 +116,10 @@ public class AppointmentService {
             a.setCompanyAdminFullName(appointment.getCompanyAdminFullName());
             a.setStartDateAndTime(appointment.getStartDateAndTime());
             a.setFinishDateAndTime(appointment.getFinishDateAndTime());
+            User user = userRepository.findById(appointment.getAdminId()).orElse(null);
+            a.setCompanyAdmin(user);
+            Company company = companyRepository.findById(appointment.getCompanyId()).orElse(null);
+            a.setCompanyAppointment(company);
             Duration duration = Duration.between(appointment.getStartDateAndTime(), appointment.getFinishDateAndTime());
             long durationInMinutes = duration.toMinutes();
             String durationAsString = Long.toString(durationInMinutes);

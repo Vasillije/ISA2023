@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface CompanyRepository extends JpaRepository<Company, Integer> {
+public interface CompanyRepository extends JpaRepository<Company, Long> {
     @Query("select c from Company c where upper(c.name)=upper(:name) and upper(c.town)=upper(:town)")
     List<Company> search(String name, String town);
     @Query("select c from Company c where upper(c.name)=upper(:name)")

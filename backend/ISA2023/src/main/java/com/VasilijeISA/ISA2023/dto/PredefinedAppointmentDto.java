@@ -16,4 +16,6 @@ public class PredefinedAppointmentDto {
     private String duration;
     private LocalDateTime startDateAndTime;
     private LocalDateTime finishDateAndTime;
+    private Long adminId;
+    private Long CompanyId;
 }

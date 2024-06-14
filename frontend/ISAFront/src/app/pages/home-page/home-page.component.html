@@ -3,13 +3,21 @@
         <h1><b>COMPANIES</b></h1>
         <div class="form">
             <form  #companyForm="ngForm" (ngSubmit)="search(companyForm.value)"> 
-                <div class="picture-div">      
-                    <p class="parag" *ngIf="authService.show==0">
-                        This page is intended only for users who are not logged in. You can currently see companies and search 
-                        for their medical equipment. If you want to use additional benefits of our website, 
-                        please<a href="http://localhost:4200/register" target="_blank"><i> create your own profile</i></a> or
-                        <a href="http://localhost:4200/login" target="_blank"><i>log in.</i></a>
-                    </p>
+                <div class="picture-div"> 
+                    <ng-container *ngIf="authService.show == 0; else loggedIn">     
+                        <p class="parag">
+                            This page is intended only for users who are not logged in. You can currently see companies and search 
+                            for their medical equipment. If you want to use additional benefits of our website, 
+                            please<a href="http://localhost:4200/register" target="_blank"><i> create your own profile</i></a> or
+                            <a href="http://localhost:4200/login" target="_blank"><i>log in.</i></a>
+                        </p>
+                    </ng-container>
+                    <ng-template #loggedIn>
+                        <ng-container *ngIf="authService.show == 1;" >
+                            <button (click)="complaintClick()">Make complaint</button>
+                            <button (click)="userProfile()">View profile</button>
+                        </ng-container>
+                    </ng-template>
                 </div>
                 <div class="formField">
                     <div class="input-container">

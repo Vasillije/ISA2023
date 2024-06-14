@@ -2,11 +2,12 @@
     <div class="center">
         <h1><b>PICK PREDEFINED APPOINTMENT</b></h1>
         <div *ngFor="let a of appointments">
-            <div  *ngIf="a.isBooked==false">
+            <div  *ngIf="a.isBooked!=true">
         <mat-card>
             <mat-card-content>
+               
                     Start : {{a.startDateAndTime}} <br> Finish {{a.finishDateAndTime}}
-                    <button class='dugme' (click)="showEquipment()">Pick appointment</button>
+                    <button class='dugme' (click)="showEquipment(a.id)">Pick appointment</button>
                 </mat-card-content>
             </mat-card>
         </div>

@@ -8,6 +8,8 @@ import { AppointmentFormComponent } from './pages/appointment-form/appointment-f
 import { ShowAppointmentsComponent } from './pages/show-appointments/show-appointments.component';
 import { ShowEquipmentComponent } from './pages/show-equipment/show-equipment.component';
 import { ScheduledAppointmentsComponent } from './pages/scheduled-appointments/scheduled-appointments.component';
+import { MakeComplaintComponent } from './pages/make-complaint/make-complaint.component';
+import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 
 const routes: Routes = [
   { path: '', component: HomePageComponent},
@@ -15,8 +17,10 @@ const routes: Routes = [
   {path: 'login' , component: LoginPageComponent},
   {path: 'appointment-form', component: AppointmentFormComponent},
   {path: 'show-appointments/:id', component: ShowAppointmentsComponent},
-  {path: 'show-equipment/:id', component: ShowEquipmentComponent},
-  {path: 'scheduled-appointments/:id', component: ScheduledAppointmentsComponent}
+  {path: 'show-equipment/:id/:companyId', component: ShowEquipmentComponent},
+  {path: 'scheduled-appointments/:id', component: ScheduledAppointmentsComponent}, 
+  {path: 'make-complaint/:id', component: MakeComplaintComponent},
+  {path : 'user-profile/:id', component: UserProfileComponent}
 ];
 
 @NgModule({

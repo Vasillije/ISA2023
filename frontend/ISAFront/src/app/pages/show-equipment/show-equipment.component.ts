@@ -6,6 +6,7 @@ import { AppointmentService } from '../../services/appointment.service';
 import { PurchaseEquipmentDto } from '../../dto/PurchaseEquipmentDto';
 import { error } from 'node:console';
 import { HttpErrorResponse } from '@angular/common/http';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-show-equipment',
@@ -19,16 +20,17 @@ export class ShowEquipmentComponent {
   equipmentsLeft!: Equipment[];
   oprema!: Equipment[];
   quantities: number[] = [];
-  isSucesfullyPurchased!: boolean;
+  isSucesfullyPurchased!: Boolean;
   appointmentId!: number;
 
-  constructor(private route: ActivatedRoute, private router: Router, private equipmentService: EquipmentService) { }
+  constructor(private route: ActivatedRoute, private router: Router, private equipmentService: EquipmentService, private authService : AuthService) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(data => {
-      const id = +data.get('id')!;
-      this.appointmentId = id;
-      this.getEquipmentByCompanyID(id);
+      const appointmentid = +data.get('id')!;
+      const companyid = +data.get('companyId')!;
+      this.appointmentId = appointmentid;
+      this.getEquipmentByCompanyID(companyid);
     });
   }
 
@@ -85,7 +87,7 @@ export class ShowEquipmentComponent {
     const p: PurchaseEquipmentDto = {
       equipments: this.equipments,
       appointmentId: this.appointmentId,
-      userId: 1
+      userId: this.authService.getUserId()!
     };
 
     console.log(this.equipments)
