@@ -5,5 +5,8 @@ export interface Complaint{
     id:number,
     description:string,
     companyComplaint:Company,
-    companyAdmin:User
+    companyAdmin:User,
+    userId:User,
+    answer:string
+    
     }

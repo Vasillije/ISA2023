@@ -7,14 +7,15 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+
 import javax.persistence.*;
 import java.util.Collection;
 import java.util.List;
 
 @Entity
 @Table(name="users")
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @Getter
 @Setter
 public class User implements UserDetails {
@@ -59,12 +60,20 @@ public class User implements UserDetails {
 
     //ovo polje imaju registrovani korisnik i system admin
     @OneToMany(mappedBy = "companyAdmin")
+    @JsonIgnore
     private List<Complaint> complaints;
+
+    @OneToMany(mappedBy = "userId")
+    @JsonIgnore
+    private List<Complaint> userComplaints;
 
     //ovo polje imaju company admin i system admin
     @ManyToOne
     @JoinColumn(name="company_id")
     private Company company;
+
+    private String activationToken;
+    private boolean emailConfirmed=false;
 
     @JsonIgnore
     @OneToMany(mappedBy = "companyAdmin")
@@ -105,5 +114,25 @@ public class User implements UserDetails {
         return true;
     }
 
-
+    public User(Long id, String email, String password, String name, String surname, String town, String country, String phoneNumber, String profession, String companyInfo, boolean enabled, int penaltyPoints, List<Appointment> appointments, List<Role> roles, List<Complaint> complaints, Company company, String activationToken, List<Appointment> createdAppointments) {
+        this.id = id;
+        this.email = email;
+        this.password = password;
+        this.name = name;
+        this.surname = surname;
+        this.town = town;
+        this.country = country;
+        this.phoneNumber = phoneNumber;
+        this.profession = profession;
+        this.companyInfo = companyInfo;
+        this.enabled = enabled;
+        this.penaltyPoints = penaltyPoints;
+        this.appointments = appointments;
+        this.roles = roles;
+        this.complaints = complaints;
+        this.company = company;
+        this.activationToken = activationToken;
+        this.emailConfirmed = false;
+        this.createdAppointments = createdAppointments;
+    }
 }

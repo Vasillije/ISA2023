@@ -24,7 +24,7 @@ export class HomePageComponent {
   ngOnInit(): void {
     this.companyService.getAll().subscribe((data) => {
       this.companies = data
-      
+      this.authService.userLoginTracker();
     })
   }
   
@@ -51,6 +51,10 @@ export class HomePageComponent {
 
   userProfile(){
     this.router.navigate(['/user-profile/', this.userId]);
+  }
+
+  adminsComplaints(){
+    this.router.navigate(['/admin-complaints/', this.userId]);
   }
 
 }

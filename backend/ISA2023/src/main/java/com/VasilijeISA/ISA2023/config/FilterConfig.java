@@ -14,7 +14,7 @@ public class FilterConfig {
         FilterRegistrationBean<RemoveChunkedEncodingFilter> registrationBean = new FilterRegistrationBean<>();
 
         registrationBean.setFilter(new RemoveChunkedEncodingFilter());
-        registrationBean.addUrlPatterns("/*"); // ili specifične putanje koje želite da filter bude primenjen
+        registrationBean.addUrlPatterns("/api/*"); // ili specifične putanje koje želite da filter bude primenjen
 
         return registrationBean;
     }

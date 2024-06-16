@@ -84,7 +84,10 @@ public class WebSecurityConfig {
 
         // sve neautentifikovane zahteve obradi uniformno i posalji 401 gresku
         http.exceptionHandling().authenticationEntryPoint(restAuthenticationEntryPoint);
-        http.authorizeRequests().antMatchers("/api/**").permitAll()		// /auth/** OVO OBRISATI NA KRAJU
+        http.authorizeRequests().antMatchers("/api/**").permitAll()
+                .antMatchers("/users/activate-account").permitAll()
+                .antMatchers("activation-result").permitAll()
+                // /auth/** OVO OBRISATI NA KRAJU
                 .antMatchers("/h2-console/**").permitAll()	// /h2-console/** ako se koristi H2 baza)
                 .antMatchers("/api/foo").permitAll()
                 //.antMatchers("/api/auth/login").permitAll()
@@ -126,6 +129,7 @@ public class WebSecurityConfig {
                 // Ovim smo dozvolili pristup statickim resursima aplikacije
                 .antMatchers(HttpMethod.GET, "/", "/webjars/**", "/*.html", "favicon.ico",
                         "/**/*.html", "/**/*.css", "/**/*.js");
+
 
     }
 

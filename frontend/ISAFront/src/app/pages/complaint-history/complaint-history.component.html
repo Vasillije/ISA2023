@@ -1,0 +1,11 @@
+<div class="background">
+    <div class="center">
+        <div *ngFor="let c of complaints">
+            <mat-card>
+                <mat-card-content>
+                    Description : {{c.description}} , answer : {{c.answer}}
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+</div>

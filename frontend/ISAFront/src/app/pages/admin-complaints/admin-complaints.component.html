@@ -1,0 +1,20 @@
+<div class="background">
+    <div class="center">
+        <form #appointmentForm="ngForm" class="form">
+            <h1><b>COMPLAINTS</b></h1>
+            <div *ngFor="let c of complaints">
+                <mat-card>
+                    <mat-card-content>
+                        Description : {{c.description}}
+                         <button class='dugme' type="button" (click)="replyComplaint(c.id, answerText)">Reply</button>
+                    </mat-card-content>
+                </mat-card>
+                <mat-form-field appearance="fill">
+                    <mat-label>Enter complaint text</mat-label>
+                <textarea matInput name="complaint" id="answerText" name="answerText" [(ngModel)]="answerText"  ></textarea>
+                </mat-form-field>
+               
+            </div>
+        </form>
+    </div>
+</div>

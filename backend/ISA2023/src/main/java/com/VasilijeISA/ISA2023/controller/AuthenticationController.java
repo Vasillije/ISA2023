@@ -65,7 +65,7 @@ public class AuthenticationController {
         //    throw new ResourceConflictException(userRequest.getId(), "Username already exists");
        // }
 
-        User user = this.userService.save(userRequest);
+        User user = this.userService.sendRegistrationEmail(userRequest);
 
         return new ResponseEntity<>(user, HttpStatus.CREATED);
     }

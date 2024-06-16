@@ -13,9 +13,13 @@
                         </p>
                     </ng-container>
                     <ng-template #loggedIn>
-                        <ng-container *ngIf="authService.show == 1;" >
-                            <button (click)="complaintClick()">Make complaint</button>
-                            <button (click)="userProfile()">View profile</button>
+                        <ng-container *ngIf="authService.userLoginTracker()" >
+                            <div style="display: flex;">
+                                <div><button mat-button class="dugme" (click)="complaintClick()">Make complaint</button></div>
+                                <div><button mat-button class="dugme" (click)="userProfile()">View user profile</button></div>
+                                <div><button mat-button class="dugme" routerLink="appointment-form">New appointment</button></div>
+                                <div><button mat-button class="dugme" (click)="adminsComplaints()">Admins complaints</button></div>
+                            </div>
                         </ng-container>
                     </ng-template>
                 </div>
@@ -39,15 +43,16 @@
 
         <mat-accordion>
             <div *ngFor="let c of companies">
-                <mat-expansion-panel (opened)="isOpen = true"
-                                     (closed)="isOpen = false">
+                <mat-expansion-panel (opened)="isOpen = true" (closed)="isOpen = false">
                     <mat-expansion-panel-header>
-                        <a [routerLink]="'/show-appointments/'+ c.id" target="_blank">
-                            <mat-panel-title>{{c.name}}</mat-panel-title>
+                        <a [routerLink]="'/show-appointments/' + c.id">
+                            <mat-panel-title>{{ c.name }}</mat-panel-title>
                         </a>
-                        <mat-panel-description>{{c.description}} </mat-panel-description>
+                        <mat-panel-description>{{ c.description }}</mat-panel-description>
                     </mat-expansion-panel-header>
-                    <p>Ovde ce ici oprema</p>
+                    <div *ngFor="let e of c.equipmentsCompany">
+                        <p>{{ e.name }}</p>
+                    </div>
                 </mat-expansion-panel>
             </div>
         </mat-accordion>

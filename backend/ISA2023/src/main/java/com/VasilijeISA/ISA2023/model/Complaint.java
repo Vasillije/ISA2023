@@ -25,4 +25,10 @@ public class Complaint {
     @ManyToOne
     @JoinColumn(name="companyAdmin_id")
     private User companyAdmin;
+
+    @ManyToOne
+    @JoinColumn(name="user_id")
+    private User userId;
+
+    private String answer;
 }

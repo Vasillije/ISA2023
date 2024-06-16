@@ -42,7 +42,7 @@ export class RegisterComponent {
     }
 
     console.log(userDto);
-    
+    alert('Confirmation email is sent')
     this.authService.register(userDto).subscribe((data)=>{
       this.user=data;
       alert('User succlesfully registered');

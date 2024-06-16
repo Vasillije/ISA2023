@@ -45,7 +45,6 @@ public class Company {
     private List<Appointment> appointments;
 
     @ManyToMany
-    @JsonIgnore
     @JoinTable(name = "company_eqipments",
             joinColumns = @JoinColumn(name = "company_id", referencedColumnName = "companyId"),
             inverseJoinColumns = @JoinColumn(name = "equipment_id",

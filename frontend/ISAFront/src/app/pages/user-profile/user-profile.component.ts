@@ -63,4 +63,8 @@ export class UserProfileComponent {
     this.router.navigate(['scheduled-appointments', this.user.id]);
   }
 
+  viewComplaints(){
+    this.router.navigate(['complaint-history', this.user.id]);
+  }
+
 }

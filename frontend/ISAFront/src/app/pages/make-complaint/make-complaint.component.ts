@@ -7,6 +7,8 @@ import { User } from '../../model/user';
 import { Complaint } from '../../model/complaint';
 import { error } from 'console';
 import { HttpErrorResponse } from '@angular/common/http';
+import { AuthService } from '../../services/auth.service';
+import { ComplaintDto } from '../../dto/ComplaintDto';
 
 @Component({
   selector: 'app-make-complaint',
@@ -25,7 +27,8 @@ export class MakeComplaintComponent {
   selectedAdmin!: User;
   complaintText: string ='';
 
-  constructor(private complaintService: ComplaintService, private appointmentService: AppointmentService, private route: ActivatedRoute) { }
+  constructor(private complaintService: ComplaintService, private appointmentService: AppointmentService, private route: ActivatedRoute, 
+              private authService : AuthService) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(data => {
@@ -76,13 +79,17 @@ export class MakeComplaintComponent {
     return this.companyAdminsList;
   }
   submitForm(form: any) {
-    var complaintFinal: Complaint = {
+    console.log(this.authService.getUserId()!)
+    var complaintFinal: ComplaintDto = {
       id: 0,
       description: this.complaintText,
       companyComplaint: this.selectedcompany,
-      companyAdmin: this.selectedAdmin
+      companyAdmin: this.selectedAdmin,
+      userId : this.authService.getUserId()!,
+      answer : ''
+      
     }
-    console.log('ovo stiye iz forme', complaintFinal);
+    console.log('ovo stize iz forme', complaintFinal);
     this.complaintService.addComplaint(complaintFinal).subscribe(
       (data) => {
         alert('Uspesno ste poslali zalbu.');

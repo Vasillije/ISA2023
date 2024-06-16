@@ -22,6 +22,7 @@ public class Equipment {
     private int quantity;
 
     @ManyToMany(mappedBy = "equipmentsCompany")
+    @JsonIgnore
     private List<Company> companies;
 
  /*   @ManyToMany(cascade = CascadeType.ALL)

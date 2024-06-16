@@ -27,6 +27,8 @@ import { ShowEquipmentComponent } from './pages/show-equipment/show-equipment.co
 import { ScheduledAppointmentsComponent } from './pages/scheduled-appointments/scheduled-appointments.component';
 import { MakeComplaintComponent } from './pages/make-complaint/make-complaint.component';
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
+import { AdminComplaintsComponent } from './pages/admin-complaints/admin-complaints.component';
+import { ComplaintHistoryComponent } from './pages/complaint-history/complaint-history.component';
 
 
 @NgModule({
@@ -40,7 +42,9 @@ import { UserProfileComponent } from './pages/user-profile/user-profile.componen
     ShowEquipmentComponent,
     ScheduledAppointmentsComponent,
     MakeComplaintComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    AdminComplaintsComponent,
+    ComplaintHistoryComponent
   ],
   imports: [
     BrowserModule,

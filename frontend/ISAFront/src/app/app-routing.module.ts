@@ -10,6 +10,8 @@ import { ShowEquipmentComponent } from './pages/show-equipment/show-equipment.co
 import { ScheduledAppointmentsComponent } from './pages/scheduled-appointments/scheduled-appointments.component';
 import { MakeComplaintComponent } from './pages/make-complaint/make-complaint.component';
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
+import { AdminComplaintsComponent } from './pages/admin-complaints/admin-complaints.component';
+import { ComplaintHistoryComponent } from './pages/complaint-history/complaint-history.component';
 
 const routes: Routes = [
   { path: '', component: HomePageComponent},
@@ -20,7 +22,10 @@ const routes: Routes = [
   {path: 'show-equipment/:id/:companyId', component: ShowEquipmentComponent},
   {path: 'scheduled-appointments/:id', component: ScheduledAppointmentsComponent}, 
   {path: 'make-complaint/:id', component: MakeComplaintComponent},
-  {path : 'user-profile/:id', component: UserProfileComponent}
+  {path : 'user-profile/:id', component: UserProfileComponent},
+  {path : 'admin-complaints/:id', component: AdminComplaintsComponent}, 
+  {path : 'complaint-history/:id', component: ComplaintHistoryComponent}
+  
 ];
 
 @NgModule({

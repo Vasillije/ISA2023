@@ -77,15 +77,16 @@ export class AuthService {
     return this.access_token;
   }
 
-  userLoginTracker(){
+  userLoginTracker() : Boolean{
    let logged= localStorage.getItem('JWT');
    if (logged){
       this.show =1;
+      return true;
    }
    else {
     this.show = 0;
+    return false;
    }
-   console.log('ovo je showww',this.show);
   }
 
 
