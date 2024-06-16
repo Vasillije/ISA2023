@@ -20,13 +20,20 @@ export class HomePageComponent {
   userId : number = this.authService.getUserId()!;
 
   constructor(private companyService : CompanyService, public authService : AuthService, private router: Router){}
-
+  role: string = '';
   ngOnInit(): void {
     this.companyService.getAll().subscribe((data) => {
       this.companies = data
       this.authService.userLoginTracker();
     })
+    this.role = this.authService.getRole() || ''; 
+    console.log('ovo je rola', this.role);
   }
+ 
+ 
+  
+
+
   
   search(result:any){
     const s: SearchDto = {

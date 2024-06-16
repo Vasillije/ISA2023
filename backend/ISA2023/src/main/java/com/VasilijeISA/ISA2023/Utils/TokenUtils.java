@@ -1,5 +1,6 @@
 package com.VasilijeISA.ISA2023.Utils;
 
+import com.VasilijeISA.ISA2023.model.Role;
 import com.VasilijeISA.ISA2023.model.User;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
@@ -8,8 +9,10 @@ import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
+
 import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
+import java.util.List;
 
 // Utility klasa za rad sa JSON Web Tokenima
 @Component
@@ -52,7 +55,7 @@ public class TokenUtils {
      * @param firstName Korisničko ime korisnika kojem se token izdaje
      * @return JWT token
      */
-    public String generateToken(String firstName, String lastName, Long userId, Long companyId) {
+    public String generateToken(String firstName, String lastName, Long userId, Long companyId, List<Role> roles) {
         return Jwts.builder()
                 .setIssuer(APP_NAME)
                 .setSubject(firstName + " " + lastName)
@@ -61,6 +64,7 @@ public class TokenUtils {
                 .setExpiration(generateExpirationDate())
                 .claim("userId", userId)
                 .claim("companyId", companyId)
+                .claim ("role", roles)
                 .signWith(SIGNATURE_ALGORITHM, SECRET).compact();
 
 

@@ -10,6 +10,13 @@ import { AuthService } from './services/auth.service';
 export class AppComponent {
   title = 'ISAFront';
   constructor(private router: Router, public authService : AuthService) {}
+
+  role: string = '';
+  ngOnInit(): void {
+    this.role = this.authService.getRole() || ''; 
+    console.log('rolaaaaaaaaaaaaa', this.role);
+  }
+
   
   redirectToRegister(){
     this.router.navigate(['/register']);

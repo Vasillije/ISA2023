@@ -46,10 +46,10 @@ public class AuthenticationController {
         User user = (User) authentication.getPrincipal();
         String jwt;
         if( user.getCompany()!=null){
-         jwt = tokenUtils.generateToken(user.getName(), user.getSurname() ,user.getId(), user.getCompany().getId());
+         jwt = tokenUtils.generateToken(user.getName(), user.getSurname() ,user.getId(), user.getCompany().getId(), user.getRoles());
         }
         else {
-             jwt = tokenUtils.generateToken(user.getName(), user.getSurname() ,user.getId(), 0L);
+             jwt = tokenUtils.generateToken(user.getName(), user.getSurname() ,user.getId(), 0L, user.getRoles());
 
     }
         int expiresIn = tokenUtils.getExpiredIn();

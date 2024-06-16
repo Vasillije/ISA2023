@@ -57,6 +57,17 @@ export class AuthService {
     return null;
   }
 
+  getRole() : string | null {
+    const tokenInfo = this.getTokenInfo();
+    if (tokenInfo) {
+      console.log(tokenInfo.role)
+      return tokenInfo.role[0].name;
+
+    }
+    return null;
+  }
+  
+
   getSubject() : string | null {
     const tokenInfo = this.getTokenInfo();
     if (tokenInfo) {

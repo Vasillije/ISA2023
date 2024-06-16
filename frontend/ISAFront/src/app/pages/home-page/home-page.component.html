@@ -15,10 +15,10 @@
                     <ng-template #loggedIn>
                         <ng-container *ngIf="authService.userLoginTracker()" >
                             <div style="display: flex;">
-                                <div><button mat-button class="dugme" (click)="complaintClick()">Make complaint</button></div>
-                                <div><button mat-button class="dugme" (click)="userProfile()">View user profile</button></div>
-                                <div><button mat-button class="dugme" routerLink="appointment-form">New appointment</button></div>
-                                <div><button mat-button class="dugme" (click)="adminsComplaints()">Admins complaints</button></div>
+                                <div><button mat-button class="dugme"  *ngIf="role === 'ROLE_USER'" (click)="complaintClick()">Make complaint</button></div>
+                                <div><button mat-button class="dugme"  *ngIf="role === 'ROLE_USER'" (click)="userProfile()">View user profile</button></div>
+                                <div><button mat-button class="dugme" *ngIf="role === 'ROLE_COMPANY_ADMIN'" routerLink="appointment-form">New appointment</button></div>
+                                <div><button mat-button class="dugme" *ngIf="role === 'ROLE_COMPANY_ADMIN'" (click)="adminsComplaints()">Admins complaints</button></div>
                             </div>
                         </ng-container>
                     </ng-template>
@@ -45,8 +45,9 @@
             <div *ngFor="let c of companies">
                 <mat-expansion-panel (opened)="isOpen = true" (closed)="isOpen = false">
                     <mat-expansion-panel-header>
-                        <a [routerLink]="'/show-appointments/' + c.id">
-                            <mat-panel-title>{{ c.name }}</mat-panel-title>
+                        <mat-panel-title>{{ c.name }}</mat-panel-title>
+                        <a  *ngIf="role === 'ROLE_USER'"  [routerLink]="'/show-appointments/' + c.id">
+                            <mat-panel-title> make appointment</mat-panel-title>
                         </a>
                         <mat-panel-description>{{ c.description }}</mat-panel-description>
                     </mat-expansion-panel-header>
